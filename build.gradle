@@ -1,4 +1,10 @@
+apply plugin: 'java'
 apply plugin: 'ratpack'
+apply plugin: 'application'
+apply plugin: 'idea'
+
+mainClassName = "Main"
+applicationName = "app"
 
 buildscript {
   repositories {
@@ -11,9 +17,11 @@ buildscript {
 
 dependencies {
   groovy 'org.codehaus.groovy:groovy:1.8.6'
+  compile 'com.augusttechgroup:ratpack-plugin:0.5.1'
 }
 
 task wrapper(type: Wrapper) {
-  gradleVersion = '1.0-milestone-8a'
+  gradleVersion = '1.0-milestone-9'
 }
 
+task stage(dependsOn: ['clean', 'installApp'])
